@@ -98,23 +98,9 @@ func (a *Client) UserCertifyOpenQuery(ctx context.Context, bm gopay.BodyMap) (al
 	return aliRsp, a.autoVerifySignByCert(aliRsp.Sign, signData, signDataErr)
 }
 
-// UserAgreementPageSign alipay.user.agreement.page.sign(支付宝个人协议页面签约接口)
+// alipay.user.agreement.page.sign(支付宝个人协议页面签约接口)
 //	文档地址：https://opendocs.alipay.com/apis/api_2/alipay.user.agreement.page.sign
 func (a *Client) UserAgreementPageSign(ctx context.Context, bm gopay.BodyMap) (ret string, err error) {
-	err = bm.CheckEmptyError("personal_product_code")
-	if err != nil {
-		return "", err
-	}
-	var bs []byte
-	if bs, err = a.doAliPay(ctx, bm, "alipay.user.agreement.page.sign"); err != nil {
-		return "", err
-	}
-	return string(bs), nil
-}
-
-// UserAgreementSignPage alipay.user.agreement.page.sign(支付宝个人协议页面签约接口)
-//	文档地址：https://opendocs.alipay.com/apis/api_2/alipay.user.agreement.page.sign
-func (a *Client) UserAgreementSignPage(ctx context.Context, bm gopay.BodyMap) (page string, err error) {
 	err = bm.CheckEmptyError("personal_product_code")
 	if err != nil {
 		return "", err
